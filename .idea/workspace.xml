@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9df644ac-811c-42b1-869a-f457da12d96c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/App-test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/__snapshots__/App-test.js.snap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/robot-dev.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/robot-dev.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/robot-prod.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/robot-prod.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/splash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/StyledText.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/StyledText.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TabBarIcon.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TabBarIcon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/StyledText-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/__tests__/StyledText-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/__tests__/__snapshots__/StyledText-test.js.snap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/Colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/constants/Colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/constants/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.expo-shared/assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.idea/delivery.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/.watchmanconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Poppins/Poppins-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/Roboto/Roboto-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/SpaceMono-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/About.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/About.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/BebasNeue-Regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/BebasNeue-Regular.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/BebasNeue-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/BebasNeue-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/BebasNeue-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/OFL-FAQ.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/OFL.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/bebas_neue/Try_BebasNeuePro.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/fonts/leaguespartan-bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/assignement-placeholder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/credit-card-back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/credit-card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/header-profile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/header.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/logo-splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/master-card.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/robot-dev.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/robot-prod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/splash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/assets/images/visa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/DatePicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/KeyboardShift.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/LocationInformation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/LocationList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/MinimalCreditCard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/MinimalMethod.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/ScreenHeader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/StyledText.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/SuccessView.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/TabBarIcon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/Terms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/__tests__/StyledText-test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/map-input.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/map-view.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/react-native-bottom-drawer/.babelrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/react-native-bottom-drawer/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/react-native-bottom-drawer/__tests__/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/react-native-bottom-drawer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/react-native-bottom-drawer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/react-native-bottom-drawer/src/Drawer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/components/react-native-bottom-drawer/src/Message.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/Animation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/Colors.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/CommunStyles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/Endpoints.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/Google.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/Layout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/Server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/Status.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/SuccessAnimation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/loading.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/constants/sending.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/containers/map-container.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/navigation/AppNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/navigation/Auth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/navigation/MainTabNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Assignements/Map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Assignements/MyAssignements.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Assignements/NewAssignement.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Assignements/PaymentScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/AuthLoading.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/ChangePassword.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/HomeScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Profile/AddPayment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Profile/Payment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/ProfileScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/Register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/RequestChangePassword.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/SettingsScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/screens/VerificationAccount.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/services/gateway.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/services/google-directions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery/services/location-service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/AppNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/AppNavigator.web.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/navigation/MainTabNavigator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LinksScreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SettingsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SettingsScreen.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1856">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>react-native</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/delivery.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="947" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="delivery" type="b2602c69:ProjectViewProjectNode" />
+              <item name="delivery" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9df644ac-811c-42b1-869a-f457da12d96c" name="Default Changelist" comment="" />
+      <created>1570212613597</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570212613597</updated>
+      <workItem from="1570212616143" duration="1481000" />
+      <workItem from="1570221642897" duration="2484000" />
+      <workItem from="1570417580140" duration="279000" />
+      <workItem from="1570418954946" duration="844000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5088000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="947" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32896304" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.48033375" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/SettingsScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3179">
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1856">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
