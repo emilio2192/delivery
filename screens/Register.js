@@ -20,6 +20,9 @@ import colors from '../constants/Colors';
 import communStyles from '../constants/CommunStyles';
 import {ScreenHeader} from "../components/ScreenHeader";
 
+import constants from '../constants/Server';
+import endpoints from '../constants/Endpoints';
+
 const {State: TextInputState} = TextInput;
 
 export class RegisterScreen extends React.Component {
@@ -75,7 +78,8 @@ export class RegisterScreen extends React.Component {
                 headers: constants.headers,
                 body: JSON.stringify(this.state.data)
             });
-            const body = JSON.parse(response._bodyInit);
+            console.log(response);
+            const body = response._bodyInit;
             if (response.ok) {
                 alert('Usuario creado con exito, realiza la verificación por medio del codigo enviado a tu email o móvil.');
                 this.props.navigation.navigate('Login');
