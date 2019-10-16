@@ -59,3 +59,6 @@ typings/
 
 # next.js build output
 .next
+
+.expo/packager-info.json
+.idea/workspace.xml

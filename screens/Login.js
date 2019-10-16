@@ -58,11 +58,11 @@ export class LoginScreen extends React.Component {
                 return;
             }
             if (response.ok && response.status === 200) {
-                await AsyncStorage.setItem("token", JSON.stringify(body.token));
-                await AsyncStorage.setItem("userInformation", JSON.stringify(body.user));
+                await AsyncStorage.setItem("token", JSON.stringify(responseJson.token));
+                await AsyncStorage.setItem("userInformation", JSON.stringify(responseJson.user));
                 this.props.navigation.navigate('Main');
             } else {
-                alert(body.msg);
+                alert(responseJson.msg);
             }
             this.setState({sending: false});
         } catch (e) {

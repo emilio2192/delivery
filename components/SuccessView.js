@@ -12,7 +12,7 @@ import {
     Modal,
     TouchableHighlight
 } from 'react-native';
-import { LinearGradient } from 'expo';
+import { LinearGradient } from 'expo-linear-gradient';
 import Animation from '../constants/Animation';
 import Colors from '../constants/Colors';
 import LottieView from "lottie-react-native";

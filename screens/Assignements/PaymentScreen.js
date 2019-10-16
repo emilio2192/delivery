@@ -1,41 +1,38 @@
 import React from 'react';
 import {
+    AsyncStorage,
+    Dimensions,
+    Modal,
+    Platform,
     StatusBar,
     StyleSheet,
-    View,
-    Dimensions,
-    Image,
     Text,
     TouchableOpacity,
-    AsyncStorage,
-    Platform,
-    Modal,
-    Alert
+    View
 } from 'react-native';
-import { ScreenHeader } from '../../components/ScreenHeader';
-import { DangerZone } from 'expo';
+import {ScreenHeader} from '../../components/ScreenHeader';
 import * as SQLite from 'expo-sqlite';
 import ENDPOINTS from '../../constants/Endpoints';
-import { gateway } from '../../services/gateway';
+import Endpoints from '../../constants/Endpoints';
+import {gateway} from '../../services/gateway';
 import MapViewDirections from 'react-native-maps-directions';
 import GOOGLE from "../../constants/Google";
-import MapView, { PROVIDER_GOOGLE, ProviderPropType, Marker, AnimatedRegion } from 'react-native-maps';
+import MapView, {AnimatedRegion, Marker, PROVIDER_GOOGLE, ProviderPropType} from 'react-native-maps';
 import Drawer from '../../components/react-native-bottom-drawer';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Collapsible from 'react-native-collapsible';
-import { MinimalCreditCard } from '../../components/MinimalCreditCard';
-import { LocationList } from '../../components/LocationList';
-import Endpoints from '../../constants/Endpoints';
-import { SuccessView } from '../../components/SuccessView';
+import {MinimalCreditCard} from '../../components/MinimalCreditCard';
+import {LocationList} from '../../components/LocationList';
+import {SuccessView} from '../../components/SuccessView';
 import Colors from '../../constants/Colors';
-import { MinimalMethod } from '../../components/MinimalMethod';
+import {MinimalMethod} from '../../components/MinimalMethod';
 import AlertAsync from "react-native-alert-async";
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { ScrollView } from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native-gesture-handler';
+import LottieView from "lottie-react-native";
 
 
 const db = SQLite.openDatabase('db.db');
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 const LATITUDE = 14.6108992;
 const LONGITUDE = -90.51908639999999;
@@ -74,11 +71,11 @@ export class PaymentScreen extends React.Component {
     }
 
     async componentDidMount() {
-        const { locations, assignmentId } = this.props.navigation.state.params;
+        const {locations, assignmentId} = this.props.navigation.state.params;
         console.log(assignmentId);
         const coordinates = [];
         locations.forEach(location => {
-            coordinates.push({ latitude: location.lat, longitude: location.lng });
+            coordinates.push({latitude: location.lat, longitude: location.lng});
         });
         if (this.props.navigation.state.params.active === 1) {
             await this._fetchMessengerLocation(assignmentId);
@@ -86,11 +83,11 @@ export class PaymentScreen extends React.Component {
                 await this._fetchMessengerLocation(assignmentId);
             }, 10 * 1000)
         }
-        this.setState({ coordinates });
+        this.setState({coordinates});
         await this._fetchPaymentMethods();
         await this._fetchPrimaryCard();
         if (this.state.primary === null) {
-            this.setState({ primary: 'cash' });
+            this.setState({primary: 'cash'});
         }
         console.log(this.state.coordinates)
     }
@@ -112,14 +109,14 @@ export class PaymentScreen extends React.Component {
     }
 
     async _fetchMessengerLocation(assignmentId) {
-        const response = await gateway(Endpoints.MessengerLocation, 'POST', { assignmentId });
+        const response = await gateway(Endpoints.MessengerLocation, 'POST', {assignmentId});
         if (response) {
             const location = response.location.split(',');
             const messengerLocation = {
                 latitude: +location[0],
                 longitude: +location[1]
             }
-            const { coordinate } = this.state;
+            const {coordinate} = this.state;
             if (Platform.OS === 'android') {
                 if (this.marker) {
                     this.marker._component.animateMarkerToCoordinate(messengerLocation, 500);
@@ -128,25 +125,26 @@ export class PaymentScreen extends React.Component {
                 coordinate.timing(messengerLocation).start();
             }
             this.setState({
-                origin: { messengerLocation }
+                origin: {messengerLocation}
             });
         }
     }
 
     executeSql = async (sql, params = []) => {
         return new Promise((resolve, reject) => db.transaction(tx => {
-            tx.executeSql(sql, params, (_, { rows }) => resolve(rows._array), reject)
+            tx.executeSql(sql, params, (_, {rows}) => resolve(rows._array), reject)
         }))
     }
 
     async _fetchPaymentMethods() {
         try {
             const rows = await this.executeSql('select * from payment_method');
-            rows.push({ number: 'cash' }, { number: 'package' });
+            rows.push({number: 'cash'}, {number: 'package'});
             this.setState({
                 cards: rows
             });
-        } catch (error) { }
+        } catch (error) {
+        }
     }
 
     // async _fetchPrimaryCard() {
@@ -163,13 +161,14 @@ export class PaymentScreen extends React.Component {
     async _fetchPrimaryCard() {
         try {
             const primary = await AsyncStorage.getItem('selectedCard');
-            this.setState({ primary });
-        } catch (error) { }
+            this.setState({primary});
+        } catch (error) {
+        }
     }
 
     async _getPrice(distance, time) {
         try {
-            const body = { distance, time }
+            const body = {distance, time}
             const response = await gateway(ENDPOINTS.price, 'POST', body);
             return response.precio;
         } catch (e) {
@@ -178,7 +177,7 @@ export class PaymentScreen extends React.Component {
     }
 
     async _setPrimaryCard(primary) {
-        this.setState({ primary });
+        this.setState({primary});
     }
 
     async _pay(price) {
@@ -201,7 +200,7 @@ export class PaymentScreen extends React.Component {
             if (response.statusCode === 200 && this.state.primary !== 'cash') {
                 return response
             } else if (this.state.primary === 'package') {
-                return { packageID: this.state.packageID };
+                return {packageID: this.state.packageID};
             }
             return {};
         } catch (error) {
@@ -220,8 +219,8 @@ export class PaymentScreen extends React.Component {
                 'Confirmar',
                 message,
                 [
-                    { text: 'Aceptar', onPress: () => Promise.resolve(true) },
-                    { text: 'No', onPress: () => Promise.resolve(false) },
+                    {text: 'Aceptar', onPress: () => Promise.resolve(true)},
+                    {text: 'No', onPress: () => Promise.resolve(false)},
                 ],
                 {
                     cancelable: false,
@@ -235,7 +234,7 @@ export class PaymentScreen extends React.Component {
                 alert("Seleccione punto donde se pagara");
                 return;
             }
-            this.setState({ sending: true });
+            this.setState({sending: true});
             const payment = await this._pay(price);
 
             const paymentType = (this.state.primary === 'cash' || this.state.primary === 'package') ? this.state.primary : 'cdcard';
@@ -250,11 +249,12 @@ export class PaymentScreen extends React.Component {
                 subject
             }
             await gateway(ENDPOINTS.createAssignement, 'POST', body);
-            this.setState({ modalVisible: true, sending: false });
+            this.setState({modalVisible: true, sending: false});
         } catch (e) {
             console.log(error)
         }
     }
+
     packageOption = () => {
         if (this.state.hasPackage === true && !this.props.navigation.state.params.readonly) {
             return (
@@ -289,20 +289,21 @@ export class PaymentScreen extends React.Component {
     refresh = async (primary) => {
         console.log(primary);
         await this._fetchPaymentMethods();
-        this.setState({ primary });
+        this.setState({primary});
     }
 
     // Render any loading content that you like here
     render() {
         const GOOGLE_MAPS_APIKEY = GOOGLE.apiKey;
-        const { locations, subject, readonly } = this.props.navigation.state.params;
+        const {locations, subject, readonly} = this.props.navigation.state.params;
         let active = this.props.navigation.state.params.active;
-        let _props = { ...this.state.props };
+        let _props = {...this.state.props};
         _props['isAssignmentScreen'] = true;
         return (
             <View style={styles.container}>
-                <StatusBar barStyle="dark-content" />
-                <ScreenHeader title={readonly ? (active ? "Mapa en vivo" : "Resumen") : "Forma de Pago"} navigation={this.props.navigation} />
+                <StatusBar barStyle="dark-content"/>
+                <ScreenHeader title={readonly ? (active ? "Mapa en vivo" : "Resumen") : "Forma de Pago"}
+                              navigation={this.props.navigation}/>
                 <MapView
                     initialRegion={{
                         latitude: LATITUDE,
@@ -310,7 +311,7 @@ export class PaymentScreen extends React.Component {
                         latitudeDelta: LATITUDE_DELTA,
                         longitudeDelta: LONGITUDE_DELTA,
                     }}
-                    style={{ position: 'absolute', bottom: 0, top: 0, left: 0, right: 0 }}
+                    style={{position: 'absolute', bottom: 0, top: 0, left: 0, right: 0}}
                     customMapStyle={GOOGLE.MinimalMap}
                     provider={PROVIDER_GOOGLE}
                     ref={c => this.mapView = c}>
@@ -318,13 +319,15 @@ export class PaymentScreen extends React.Component {
                         this.state.coordinates.length >= 2 && active &&
                         <Marker.Animated
                             coordinate={this.state.coordinate}
-                            ref={marker => { this.marker = marker; }}>
-                            <MaterialIcons name="person-pin-circle" size={30} color="#ffb600" />
+                            ref={marker => {
+                                this.marker = marker;
+                            }}>
+                            <MaterialIcons name="person-pin-circle" size={30} color="#ffb600"/>
                         </Marker.Animated>
                     }
                     {this.state.coordinates.map((coordinate, index) =>
                         <Marker key={`coordinate_${index}`} coordinate={coordinate}>
-                            <MaterialIcons name="place" size={30} color={Colors.YELLOW} />
+                            <MaterialIcons name="place" size={30} color={Colors.YELLOW}/>
                         </Marker>
                     )}
                     {(this.state.coordinates.length >= 2) && (
@@ -336,9 +339,9 @@ export class PaymentScreen extends React.Component {
                                     (this.state.coordinates.length > 1) ?
                                         this.state.coordinates.slice(0, -1) : null
                                 ) : (
-                                        (this.state.coordinates.length > 2) ?
-                                            this.state.coordinates.slice(1, -1) : null
-                                    )
+                                    (this.state.coordinates.length > 2) ?
+                                        this.state.coordinates.slice(1, -1) : null
+                                )
                             }
                             apikey={GOOGLE_MAPS_APIKEY}
                             strokeWidth={3}
@@ -346,7 +349,7 @@ export class PaymentScreen extends React.Component {
                             onReady={async result => {
                                 const price = await this._getPrice(result.distance, result.duration);
                                 await this._hasAvailablePackage(price);
-                                this.setState({ price });
+                                this.setState({price});
                                 this.mapView.fitToCoordinates(result.coordinates, {
                                     edgePadding: {
                                         top: 150,
@@ -359,7 +362,9 @@ export class PaymentScreen extends React.Component {
                             onStart={(params) => {
                                 console.log(`Started routing between "${params.origin}" and "${params.destination}"`);
                             }}
-                            onError={(error) => { console.log(error) }}
+                            onError={(error) => {
+                                console.log(error)
+                            }}
                         />
                     )}
                 </MapView>
@@ -370,30 +375,32 @@ export class PaymentScreen extends React.Component {
                             Number.parseFloat(this.state.price ? this.state.price : 0).toFixed(2)
                         }</Text>
                     </View>
-                    {!readonly && <View style={{ paddingHorizontal: 24 }}>
-                        <Text style={[styles.titlePlaceholder, { marginBottom: 5, marginTop: 15 }]}>SELECCIONA UN MÉTODO DE PAGO</Text>
+                    {!readonly && <View style={{paddingHorizontal: 24}}>
+                        <Text style={[styles.titlePlaceholder, {marginBottom: 5, marginTop: 15}]}>SELECCIONA UN MÉTODO
+                            DE PAGO</Text>
                         <TouchableOpacity
                             style={[
                                 styles.addButton,
                             ]}
-                            onPress={() => this.setState({ modalPaymentVisible: true })}>
+                            onPress={() => this.setState({modalPaymentVisible: true})}>
                             {
                                 this.state.primary !== 'cash' && this.state.cards.map((card, index) => {
                                     if (card.number === this.state.primary) {
                                         return (
-                                            <MinimalCreditCard card={card} type="card" key={index} />
+                                            <MinimalCreditCard card={card} type="card" key={index}/>
                                         );
                                     }
                                 })
                             }
                             {
-                                this.state.primary === 'cash' && <MinimalCreditCard type="cash" />
+                                this.state.primary === 'cash' && <MinimalCreditCard type="cash"/>
                             }
-                            <Ionicons name="ios-arrow-forward" color={Colors.DARK} size={16} />
+                            <Ionicons name="ios-arrow-forward" color={Colors.DARK} size={16}/>
                         </TouchableOpacity>
                     </View>}
-                    <Text style={[styles.titlePlaceholder, { marginBottom: 5, marginTop: 35, marginHorizontal: 24 }]}>INFORMACIÓN DE CONTACTO</Text>
-                    <View style={{ padding: 24, marginHorizontal: 24, backgroundColor: 'white', borderRadius: 5 }}>
+                    <Text style={[styles.titlePlaceholder, {marginBottom: 5, marginTop: 35, marginHorizontal: 24}]}>INFORMACIÓN
+                        DE CONTACTO</Text>
+                    <View style={{padding: 24, marginHorizontal: 24, backgroundColor: 'white', borderRadius: 5}}>
                         <View style={styles.row}>
                             <Text style={styles.label}>NOMBRE</Text>
                             <Text style={styles.label}>{subject.contactName}</Text>
@@ -419,20 +426,24 @@ export class PaymentScreen extends React.Component {
                         }
                     </View>
                 </Drawer>
-                {!readonly && <View style={[styles.saveButtonContainer, { width: Dimensions.get('window').width - 24, elevation: 10 }]}>
+                {!readonly &&
+                <View style={[styles.saveButtonContainer, {width: Dimensions.get('window').width - 24, elevation: 10}]}>
                     <TouchableOpacity
                         style={[
                             styles.saveButton,
-                            { width: Dimensions.get('window').width - 48 }
+                            {width: Dimensions.get('window').width - 48}
                         ]}
                         onPress={() => this._create(locations, this.state.price, subject)}>
-                        {!this.state.sending && <Text style={{ color: 'white', fontFamily: 'roboto-bold' }}>CONFIRMAR ORDEN</Text>}
+                        {!this.state.sending &&
+                        <Text style={{color: 'white', fontFamily: 'roboto-bold'}}>CONFIRMAR ORDEN</Text>}
                         {this.state.sending &&
-                            <Lottie
-                                ref={c => this._playAnimation(c)}
-                                source={require('../../constants/sending.json')}
-                                loop={true}
-                            />
+                        <LottieView
+                            ref={animation => {
+                                this.animation = animation;
+                            }}
+                            source={require('../../constants/sending.json')}
+                            loop={true}
+                        />
                         }
                     </TouchableOpacity>
                 </View>}
@@ -441,7 +452,7 @@ export class PaymentScreen extends React.Component {
                     transparent={false}
                     visible={this.state.modalVisible}
                     onRequestClose={() => console.log('')}>
-                    <SuccessView onHomePress={() => this.props.navigation.navigate('Main')} />
+                    <SuccessView onHomePress={() => this.props.navigation.navigate('Main')}/>
                 </Modal>
                 <Modal
                     animationType="slide"
@@ -450,12 +461,13 @@ export class PaymentScreen extends React.Component {
                     onRequestClose={() => console.log('')}>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => this.setState({ modalPaymentVisible: false })}>
-                        <Ionicons name="ios-checkmark" color="white" size={40} />
+                        onPress={() => this.setState({modalPaymentVisible: false})}>
+                        <Ionicons name="ios-checkmark" color="white" size={40}/>
                     </TouchableOpacity>
-                    <ScrollView style={{ paddingHorizontal: 24, paddingTop: 50, flex: 1 }}>
-                        <TouchableOpacity style={{ paddingHorizontal: 24 }} onPress={() => this.setState({ modalPaymentVisible: false })}>
-                            <Ionicons name="ios-close" size={36} color={Colors.DARK} />
+                    <ScrollView style={{paddingHorizontal: 24, paddingTop: 50, flex: 1}}>
+                        <TouchableOpacity style={{paddingHorizontal: 24}}
+                                          onPress={() => this.setState({modalPaymentVisible: false})}>
+                            <Ionicons name="ios-close" size={36} color={Colors.DARK}/>
                         </TouchableOpacity>
                         <Text style={styles.labelInfo}>SELECCIONA MÉTODO DE PAGO</Text>
                         {
@@ -463,32 +475,38 @@ export class PaymentScreen extends React.Component {
                                 if (card.number !== 'cash' && card.number !== 'package') {
                                     return (
                                         <TouchableOpacity
-                                            style={[styles.addButton, { marginTop: 10 }]}
+                                            style={[styles.addButton, {marginTop: 10}]}
                                             onPress={() => this._setPrimaryCard(card.number)}
                                             key={index}>
-                                            <MinimalCreditCard card={card} type="card" />
-                                            {card.number === this.state.primary && <Ionicons name="ios-checkmark-circle" size={30} color={Colors.GREEN} />}
+                                            <MinimalCreditCard card={card} type="card"/>
+                                            {card.number === this.state.primary &&
+                                            <Ionicons name="ios-checkmark-circle" size={30} color={Colors.GREEN}/>}
                                         </TouchableOpacity>
                                     );
                                 }
                             })
                         }
                         <TouchableOpacity
-                            style={[styles.addButton, { marginTop: 10 }]}
-                            onPress={() => { console.log('Setting cash as primary method'); this._setPrimaryCard('cash') }}>
-                            <MinimalCreditCard type="cash" />
-                            {'cash' === this.state.primary && <Ionicons name="ios-checkmark-circle" size={30} color={Colors.GREEN} />}
+                            style={[styles.addButton, {marginTop: 10}]}
+                            onPress={() => {
+                                console.log('Setting cash as primary method');
+                                this._setPrimaryCard('cash')
+                            }}>
+                            <MinimalCreditCard type="cash"/>
+                            {'cash' === this.state.primary &&
+                            <Ionicons name="ios-checkmark-circle" size={30} color={Colors.GREEN}/>}
                         </TouchableOpacity>
                         <TouchableOpacity
-                            style={[styles.addButton, { marginTop: 25 }]}
+                            style={[styles.addButton, {marginTop: 25}]}
                             onPress={() => {
-                                this.setState({ modalPaymentVisible: false })
+                                this.setState({modalPaymentVisible: false})
                                 this.props.navigation.navigate('AddPayment', {
                                     onGoBack: (primary) => this.refresh(primary),
                                 })
                             }}>
-                            <Text style={{ color: Colors.DARK, fontSize: 16, fontFamily: 'roboto-bold' }}>AGREGAR TARJETA</Text>
-                            <Ionicons name="ios-add" size={30} color={Colors.DARK} />
+                            <Text style={{color: Colors.DARK, fontSize: 16, fontFamily: 'roboto-bold'}}>AGREGAR
+                                TARJETA</Text>
+                            <Ionicons name="ios-add" size={30} color={Colors.DARK}/>
                         </TouchableOpacity>
                     </ScrollView>
                 </Modal>
@@ -614,7 +632,7 @@ const styles = StyleSheet.create({
         height: 65,
         borderRadius: 50,
         shadowColor: '#98CC33',
-        shadowOffset: { width: 0, height: 5 },
+        shadowOffset: {width: 0, height: 5},
         shadowOpacity: 0.8,
         shadowRadius: 10,
         elevation: 10,

@@ -78,13 +78,14 @@ export class RegisterScreen extends React.Component {
                 headers: constants.headers,
                 body: JSON.stringify(this.state.data)
             });
+            const responseJson = await response.json();
             console.log(response);
             const body = response._bodyInit;
             if (response.ok) {
                 alert('Usuario creado con exito, realiza la verificación por medio del codigo enviado a tu email o móvil.');
                 this.props.navigation.navigate('Login');
             } else {
-                alert("Error: " + body.message);
+                alert("Error: " + responseJson.message);
             }
         } catch (e) {
             console.log("ERROR ", e);
