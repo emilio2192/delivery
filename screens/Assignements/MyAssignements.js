@@ -67,6 +67,7 @@ export class MyAssignement extends React.Component {
             user = JSON.parse(user);
             console.log(user);
             const response = await gateway(Endpoints.GetAssignement(user.id), 'GET');
+            console.log(response);
             this.setState({assignments: lodash.orderBy(response.Assignments, ['date'], ['desc'])});
             const waiting = lodash.filter(response.Assignments, function (o) {
                 return o.status === Status.WAITING

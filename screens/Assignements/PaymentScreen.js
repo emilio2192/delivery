@@ -53,6 +53,8 @@ export class PaymentScreen extends React.Component {
         coordinate: new AnimatedRegion({
             latitude: LATITUDE,
             longitude: LONGITUDE,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA
         }),
         origin: {
             latitude: LATITUDE,
@@ -77,7 +79,8 @@ export class PaymentScreen extends React.Component {
         locations.forEach(location => {
             coordinates.push({latitude: location.lat, longitude: location.lng});
         });
-        if (this.props.navigation.state.params.active === 1) {
+        // task to refresh location of messenger
+        if (this.props.navigation.state.params.active === true) {
             await this._fetchMessengerLocation(assignmentId);
             setInterval(async () => {
                 await this._fetchMessengerLocation(assignmentId);
@@ -147,16 +150,6 @@ export class PaymentScreen extends React.Component {
         }
     }
 
-    // async _fetchPrimaryCard() {
-    //     try {
-    //         let primary = await AsyncStorage.getItem('selectedCard');
-    //         console.log('primary', primary);
-    //         if(primary===null){
-    //             primary = 'cash';
-    //         }
-    //         this.setState({ primary });
-    //     } catch (error) { }
-    // }
 
     async _fetchPrimaryCard() {
         try {
@@ -287,7 +280,6 @@ export class PaymentScreen extends React.Component {
     }
 
     refresh = async (primary) => {
-        console.log(primary);
         await this._fetchPaymentMethods();
         this.setState({primary});
     }
@@ -300,6 +292,7 @@ export class PaymentScreen extends React.Component {
         let _props = {...this.state.props};
         _props['isAssignmentScreen'] = true;
         return (
+            // <View><Text>hola</Text></View>
             <View style={styles.container}>
                 <StatusBar barStyle="dark-content"/>
                 <ScreenHeader title={readonly ? (active ? "Mapa en vivo" : "Resumen") : "Forma de Pago"}
@@ -348,7 +341,7 @@ export class PaymentScreen extends React.Component {
                             strokeColor={Colors.CIAN}
                             onReady={async result => {
                                 const price = await this._getPrice(result.distance, result.duration);
-                                await this._hasAvailablePackage(price);
+                                // await this._hasAvailablePackage(price);
                                 this.setState({price});
                                 this.mapView.fitToCoordinates(result.coordinates, {
                                     edgePadding: {
