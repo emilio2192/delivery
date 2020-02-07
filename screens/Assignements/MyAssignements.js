@@ -65,10 +65,10 @@ export class MyAssignement extends React.Component {
             const token = await AsyncStorage.getItem('token');
             console.log(token);
             user = JSON.parse(user);
-            console.log(user);
+            console.log("USER ---> ",user);
             const response = await gateway(Endpoints.GetAssignement(user.id), 'GET');
             console.log(response);
-            this.setState({assignments: lodash.orderBy(response.Assignments, ['date'], ['desc'])});
+            this.setState({assignments: lodash.orderBy(response.Assignments, ['date'], ['desc']), user: user});
             const waiting = lodash.filter(response.Assignments, function (o) {
                 return o.status === Status.WAITING
             }).length;
@@ -222,7 +222,7 @@ export class MyAssignement extends React.Component {
                             source={require('../../assets/images/assignement-placeholder.png')}
                             style={{width: 120, height: 120, resizeMode: 'contain', marginBottom: 40}}
                         />
-                        <Text style={styles.bigText}>Hola,</Text>
+                        <Text style={styles.bigText}>Hola {this.state.user.contactName},</Text>
                         <Text style={styles.infoText}>Parece que aún no has creado ninguna asignación. Crea una
                             asignación para poder darle seguimiento.</Text>
                         <TouchableOpacity

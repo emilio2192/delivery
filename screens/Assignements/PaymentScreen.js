@@ -179,6 +179,8 @@ export class PaymentScreen extends React.Component {
                 paymethod: this.state.primary,
                 amount: price
             };
+
+            console.log("json del precio ++++++++++++>", body);
             if (this.state.primary === 'package') {
                 body.packageId = this.state.packageID;
             } else if (this.state.primary !== 'cash') {
@@ -203,6 +205,7 @@ export class PaymentScreen extends React.Component {
 
     async _create(locations, price, subject) {
         try {
+            console.log("PRECIO EN CREAR ", price);
             if (this.state.primary === 'none') {
                 alert('No se ha seleccionado metodo de pago');
                 return;
@@ -236,11 +239,13 @@ export class PaymentScreen extends React.Component {
             const body = {
                 paymentType,
                 paymentMethod,
+                price,
                 userMessengerLocations: [],
                 locations,
                 payment,
                 subject
             }
+            console.log("CREAR ASIGNACION ++++++++++++++>>>> ",body);
             await gateway(ENDPOINTS.createAssignement, 'POST', body);
             this.setState({modalVisible: true, sending: false});
         } catch (e) {
