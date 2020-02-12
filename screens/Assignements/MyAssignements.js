@@ -171,7 +171,8 @@ export class MyAssignement extends React.Component {
                                                     locations: item.locations,
                                                     subject: item.subject,
                                                     active: true,
-                                                    assignmentId: item.assignmentID
+                                                    assignmentId: item.assignmentID,
+                                                    price: item.price   
                                                 }
                                             )}
                                             style={styles.cardBody}>

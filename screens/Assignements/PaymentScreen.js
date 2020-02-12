@@ -297,7 +297,6 @@ export class PaymentScreen extends React.Component {
         let _props = {...this.state.props};
         _props['isAssignmentScreen'] = true;
         return (
-            // <View><Text>hola</Text></View>
             <View style={styles.container}>
                 <StatusBar barStyle="dark-content"/>
                 <ScreenHeader title={readonly ? (active ? "Mapa en vivo" : "Resumen") : "Forma de Pago"}
@@ -345,6 +344,8 @@ export class PaymentScreen extends React.Component {
                             strokeWidth={3}
                             strokeColor={Colors.CIAN}
                             onReady={async result => {
+                                console.log("===========+>", this.state.coordinates);
+                                console.log("RESULT ====>", active);
                                 const price = await this._getPrice(result.distance, result.duration);
                                 // await this._hasAvailablePackage(price);
                                 this.setState({price});
@@ -370,7 +371,7 @@ export class PaymentScreen extends React.Component {
                     <View style={styles.drawerHeader}>
                         <Text style={styles.titlePlaceholder}>TOTAL</Text>
                         <Text style={styles.drawerTitle}>Q {
-                            Number.parseFloat(this.state.price ? this.state.price : 0).toFixed(2)
+                            Number.parseFloat(this.state.price? this.state.price : (this.state.props.price? this.state.props.price : 0)).toFixed(2)
                         }</Text>
                     </View>
                     {!readonly && <View style={{paddingHorizontal: 24}}>

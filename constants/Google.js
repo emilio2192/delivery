@@ -1,5 +1,7 @@
 export default {
-    apiKey: 'AIzaSyDZY1Z8inwjaZr4h9BhPYIXsyHkNs3MrbQ',
+    apiKey: 'AIzaSyBtaC_xeEDhXnT7lReCnVuINsWOMKx23dg',
+    // AIzaSyDZY1Z8inwjaZr4h9BhPYIXsyHkNs3MrbQ
+    // AIzaSyDt9e2P4tdEXkDsxsZQsh35eLcJsrT_CjE
     MapStyle: [
         {
             "elementType": "geometry",
