@@ -117,9 +117,9 @@ class MapContainer extends React.Component {
                 >
                     <EvilIcons name="chevron-left" color="black" size={28} />
                 </TouchableOpacity>
-                <View style={[styles.searchContainer, { width: inputWidth }]}>
+                <View style={[styles.searchContainer, { width: inputWidth, zIndex: 20, position:'absolute' }]}>
                     <EvilIcons name="search" size={18} color="#151515" style={{ position: 'absolute', zIndex: 11, left: 20 }} />
-                    <MapInput notifyChange={loc => this.getCoordsFromName(loc)} />
+                    <MapInput notifyChange={loc => this.getCoordsFromName(loc)} style={{position:'absolute', zIndex:20}} />
                 </View>
                 <Image
                     source={require('../assets/images/marker.png')}

@@ -24,7 +24,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "llevole.com",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "llevole.com",
+      "versionCode": 1
     },
     "description": "",
     "githubUrl": "https://github.com/emilio2192/delivery"

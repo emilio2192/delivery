@@ -32,7 +32,7 @@ class MapInput extends React.Component {
                 enablePoweredByContainer={false}
                 styles={{
                     container: {
-                        zIndex: 10,
+                        zIndex: 999,
                         overflow: 'visible',
                         elevation: 20
                     },
@@ -56,17 +56,28 @@ class MapInput extends React.Component {
                         paddingLeft: 40
                     },
                     listView: {
-                        position: 'absolute',
-                        top: 60,
-                        backgroundColor: 'white',
-                        borderRadius: 10,
-                        flex: 1,
-                        elevation: 100,
-                        zIndex: 100,
-                        shadowColor: '#969696',
-                        shadowOffset: { width: 0, height: 5 },
-                        shadowOpacity: 0.8,
-                        shadowRadius: 10,
+                        // position: 'absolute',
+                        // top: 60,
+                        // backgroundColor: 'white',
+                        // borderRadius: 10,
+                        // flex: 1,
+                        // elevation: 999,
+                        // zIndex: 999,
+                        // shadowColor: '#969696',
+                        // shadowOffset: { width: 0, height: 5 },
+                        // shadowOpacity: 0.8,
+                        // shadowRadius: 10,
+                        // marginTop:50
+                        borderWidth: 1,
+                        borderColor: "#ddd",
+                        backgroundColor: "#fff",
+                        marginHorizontal: 20,
+                        elevation: 5,
+                        shadowColor: "#000",
+                        shadowOpacity: 0.1,
+                        shadowOffset: { x: 0, y: 0 },
+                        shadowRadius: 15,
+                        marginTop: 10
                     },
                     description: {
                         color: '#24292e',

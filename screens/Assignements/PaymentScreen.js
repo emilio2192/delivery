@@ -81,6 +81,7 @@ export class PaymentScreen extends React.Component {
         });
         // task to refresh location of messenger
         if (this.props.navigation.state.params.active === true) {
+            console.log('inside navigation');
             await this._fetchMessengerLocation(assignmentId);
             setInterval(async () => {
                 await this._fetchMessengerLocation(assignmentId);
@@ -113,6 +114,7 @@ export class PaymentScreen extends React.Component {
 
     async _fetchMessengerLocation(assignmentId) {
         const response = await gateway(Endpoints.MessengerLocation, 'POST', {assignmentId});
+        console.log("update location messenger ",response);
         if (response) {
             const location = response.location.split(',');
             const messengerLocation = {

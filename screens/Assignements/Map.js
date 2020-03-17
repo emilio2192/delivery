@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         height: 50,
         backgroundColor: 'white',
-        zIndex: 10,
+        zIndex: 500,
         paddingHorizontal: 30,
         paddingVertical: 15,
         borderRadius: 30,
