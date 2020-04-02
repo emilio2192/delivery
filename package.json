@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo/samples": "^3.0.3",
+    "accordion-collapse-react-native": "^0.2.8",
     "expo": "^35.0.0",
     "expo-font": "^7.0.0",
     "expo-linear-gradient": "^7.0.1",
