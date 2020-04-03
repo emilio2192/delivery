@@ -100,17 +100,30 @@ export class MyAssignement extends React.Component {
     // Render any loading content that you like here
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.container}> 
                 <NavigationEvents onDidFocus={() => this.fetchAssignments()}/>
                 {this.state.assignments.length > 0 && <StatusBar barStyle="light-content"/>}
                 {this.state.assignments.length < 0 && <StatusBar barStyle="dark-content"/>}
                 {
                     !this.state.isLoading && this.state.assignments.length > 0 &&
                     <View style={styles.header}>
-                        <Text style={styles.title}>Asignaciones</Text>
+                        <View style={{flexDirection: "column", alignItems: "center"}}>
+                            <Image
+                                style={styles.icon}
+                                source={require("../../assets/images/kangaroo.png")}
+                                /> 
+                            <Text style={styles.title}>Tus Asignaciones</Text>
+                        </View>
                         <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('New')}>
-                            <Ionicons name='ios-add' size={35} color={Colors.WHITE} />
+                            onPress={() => this.props.navigation.navigate('New')}
+                            >
+                            <View style={{flexDirection: "column", alignItems: "center"}}>
+                                <View style={styles.add}>
+                                <Ionicons name='ios-add' size={35} color={Colors.WHITE} />
+                                </View>
+                                <Text style={{fontSize: 15, color: Colors.WHITE}}>Crear una</Text>
+                                <Text style={{fontSize: 15, color: Colors.WHITE}}>nueva</Text>
+                            </View>
                         </TouchableOpacity>
                     </View>
                 }
@@ -259,6 +272,22 @@ export class MyAssignement extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    add: {
+        backgroundColor: Colors.YELLOW, 
+        borderRadius: 100, 
+        width: 40, 
+        height:40, 
+        alignItems: "center", 
+        justifyContent: 'center'
+        },
+    icon: {
+        alignSelf: "center",
+        position: "absolute",
+        width: 80,
+        height: 80,
+        resizeMode: "contain",
+        top: -70
+    },
     container: {
         flex: 1,
         paddingTop: 70,
@@ -338,7 +367,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     headerBackground: {
-        height: 200,
+        height: 250,
         width: Dimensions.get('window').width,
         position: 'absolute',
         top: 0,

@@ -43,6 +43,7 @@ export class PaymentScreen extends React.Component {
 
     static navigationOptions = {
         header: null,
+
     };
 
     state = {
@@ -74,7 +75,6 @@ export class PaymentScreen extends React.Component {
 
     async componentDidMount() {
         const {locations, assignmentId} = this.props.navigation.state.params;
-        console.log(assignmentId);
         const coordinates = [];
         locations.forEach(location => {
             coordinates.push({latitude: location.lat, longitude: location.lng});
@@ -93,7 +93,7 @@ export class PaymentScreen extends React.Component {
         if (this.state.primary === null) {
             this.setState({primary: 'cash'});
         }
-        console.log(this.state.coordinates)
+        console.log(this.state)
     }
 
     async _hasAvailablePackage(price) {
@@ -111,11 +111,19 @@ export class PaymentScreen extends React.Component {
             console.log(e);
         }
     }
+    
+    isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
 
     async _fetchMessengerLocation(assignmentId) {
         const response = await gateway(Endpoints.MessengerLocation, 'POST', {assignmentId});
-        console.log("update location messenger ",response);
-        if (response) {
+        console.log(response);
+        if (!this.isEmpty(response)) {
             const location = response.location.split(',');
             const messengerLocation = {
                 latitude: +location[0],
@@ -301,8 +309,9 @@ export class PaymentScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <StatusBar barStyle="dark-content"/>
-                <ScreenHeader title={readonly ? (active ? "Mapa en vivo" : "Resumen") : "Forma de Pago"}
-                              navigation={this.props.navigation}/>
+                <ScreenHeader title={readonly ? (active ? "Ubicación" : "Resumen") : "Forma de Pago"}
+                              navigation={this.props.navigation}
+                              iconRight={readonly ? null : "payment"}/>
                 <MapView
                     initialRegion={{
                         latitude: LATITUDE,
@@ -369,7 +378,7 @@ export class PaymentScreen extends React.Component {
                         />
                     )}
                 </MapView>
-                <Drawer teaserHeight={readonly ? 125 : 300}>
+                <Drawer color={{backgroundColor: readonly ? Colors.CIAN : Colors.YELLOW }} teaserHeight={readonly ? 125 : 300}>
                     <View style={styles.drawerHeader}>
                         <Text style={styles.titlePlaceholder}>TOTAL</Text>
                         <Text style={styles.drawerTitle}>Q {
@@ -436,7 +445,7 @@ export class PaymentScreen extends React.Component {
                         ]}
                         onPress={() => this._create(locations, this.state.price, subject)}>
                         {!this.state.sending &&
-                        <Text style={{color: 'white', fontFamily: 'roboto-bold'}}>CONFIRMAR ORDEN</Text>}
+                        <Text style={{color: 'white', fontFamily: 'roboto-bold', fontSize: 22}}>CONFIRMAR</Text>}
                         {this.state.sending &&
                         <LottieView
                             ref={animation => {
@@ -590,7 +599,7 @@ const styles = StyleSheet.create({
     saveButton: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: Colors.YELLOW,
+        backgroundColor: Colors.CIAN,
         borderColor: 'white',
         borderWidth: 2,
         padding: 10,
