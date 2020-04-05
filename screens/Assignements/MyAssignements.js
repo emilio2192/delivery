@@ -107,7 +107,7 @@ export class MyAssignement extends React.Component {
                 {
                     !this.state.isLoading && this.state.assignments.length > 0 &&
                     <View style={styles.header}>
-                        <View style={{flexDirection: "column", alignItems: "center"}}>
+                        <View style={{flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1}}>
                             <Image
                                 style={styles.icon}
                                 source={require("../../assets/images/kangaroo.png")}
@@ -281,12 +281,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
         },
     icon: {
-        alignSelf: "center",
-        position: "absolute",
         width: 80,
         height: 80,
         resizeMode: "contain",
-        top: -70
+
     },
     container: {
         flex: 1,
@@ -364,7 +362,7 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'center', 
     },
     headerBackground: {
         height: 250,
