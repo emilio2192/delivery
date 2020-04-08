@@ -116,6 +116,7 @@ export class MyAssignement extends React.Component {
                         </View>
                         <TouchableOpacity
                             onPress={() => this.props.navigation.navigate('New')}
+                            style={{position: "absolute", right: 0 }}
                             >
                             <View style={{flexDirection: "column", alignItems: "center"}}>
                                 <View style={styles.add}>
