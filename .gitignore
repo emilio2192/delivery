@@ -62,3 +62,5 @@ typings/
 
 .expo/packager-info.json
 .idea/workspace.xml
+.expo-shared/
+.expo/
