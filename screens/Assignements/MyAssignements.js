@@ -63,11 +63,9 @@ export class MyAssignement extends React.Component {
         try {
             let user = await AsyncStorage.getItem('userInformation');
             const token = await AsyncStorage.getItem('token');
-            console.log(token);
-            user = JSON.parse(user);
-            console.log("USER ---> ",user);
+            
             const response = await gateway(Endpoints.GetAssignement(user.id), 'GET');
-            console.log(response);
+        
             this.setState({assignments: lodash.orderBy(response.Assignments, ['date'], ['desc']), user: user});
             const waiting = lodash.filter(response.Assignments, function (o) {
                 return o.status === Status.WAITING
@@ -184,7 +182,7 @@ export class MyAssignement extends React.Component {
                                                     readonly: true,
                                                     locations: item.locations,
                                                     subject: item.subject,
-                                                    active: true,
+                                                    active: item.status === Status.IN_PROGRESS  ? true : false,
                                                     assignmentId: item.assignmentID,
                                                     price: item.price   
                                                 }

@@ -13,12 +13,13 @@ import {
 import communStyles from '../constants/CommunStyles';
 import constants from '../constants/Server';
 import endpoints from '../constants/Endpoints';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {SafeAreaView} from 'react-navigation';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { SafeAreaView } from 'react-navigation';
 
 import LottieView from "lottie-react-native";
+import registerForPushNotificationsAsync from '../components/registerForPushNotificationsAsync';
 
-
+import { Notifications } from 'expo';
 export class LoginScreen extends React.Component {
     static navigationOptions = {
         header: null,
@@ -38,10 +39,33 @@ export class LoginScreen extends React.Component {
 
     componentWillMount() {
     }
+    _handleNotification = ({ origin, data }) => {
+        // do whatever you want to do with the notification
+        console.log("hola mundo es una push");
+        console.log(data);
+        if (data.type == "assignmentNotification") {
+            const assigntment = data.data;
+            const locations = assigntment.locations;
+            const subject = assigntment.subject;
+            const assigntmentID = assigntment.assignmentId;
+            const price = assigntment.price;
+            const active = assigntment.active;
+            this.props.navigation.navigate('PaymentScreen',
+                {
+                    readonly: true,
+                    locations: locations,
+                    subject: subject,
+                    active: active,
+                    assignmentId: assigntmentID,
+                    price: price
+                }
+            );
+        }
+    };
 
     login = async () => {
         try {
-            this.setState({sending: true});
+            this.setState({ sending: true });
             let response = await fetch(constants.domain + endpoints.signIn, {
                 method: 'POST',
                 headers: constants.headers,
@@ -52,19 +76,20 @@ export class LoginScreen extends React.Component {
             const responseJson = await response.json();
             console.log('LOGIN ', responseJson);
             if (response.status === 401 && response.ok === false && responseJson.verified === false) {
-                console.log('inside');
-                this.setState({sending: false});
-                this.props.navigation.navigate('Verify', {username: this.state.data.username});
+                this.setState({ sending: false });
+                this.props.navigation.navigate('Verify', { username: this.state.data.username });
                 return;
             }
             if (response.ok && response.status === 200) {
                 await AsyncStorage.setItem("token", JSON.stringify(responseJson.token));
                 await AsyncStorage.setItem("userInformation", JSON.stringify(responseJson.user));
+                await registerForPushNotificationsAsync(responseJson.user.id, responseJson.token);
+                this._notificationSubscription = Notifications.addListener(this._handleNotification);
                 this.props.navigation.navigate('Main');
             } else {
                 alert(responseJson.msg);
             }
-            this.setState({sending: false});
+            this.setState({ sending: false });
         } catch (e) {
             console.log("ERROR ", e);
         }
@@ -78,75 +103,75 @@ export class LoginScreen extends React.Component {
     render() {
         return (
             <SafeAreaView
-                style={{flex: 1, backgroundColor: '#F4F4F4'}}
-                forceInset={{top: 'never'}}>
+                style={{ flex: 1, backgroundColor: '#F4F4F4' }}
+                forceInset={{ top: 'never' }}>
                 <KeyboardAwareScrollView
                     innerRef={ref => {
                         this.scroll = ref
                     }}
-                    resetScrollToCoords={{x: 0, y: 0}}
+                    resetScrollToCoords={{ x: 0, y: 0 }}
                     contentContainerStyle={styles.container}
                     scrollEnabled={false}>
                     <Image style={styles.logo}
-                           source={require('../assets/images/logo.png')}/>
+                        source={require('../assets/images/logo.png')} />
                     <KeyboardAvoidingView style={styles.formContainer} behavior="padding" enabled>
                         <Text style={styles.textInput}>Usuario:</Text>
                         <TextInput style={styles.inputStyle}
-                                   onChangeText={(text) => this.setState({data: {...this.state.data, username: text}})}
-                                   keyboardType='email-address'
-                                   returnKeyType='next'
-                                   onSubmitEditing={() => {
-                                       this.password.focus();
-                                   }}
-                                   blurOnSubmit={false}
-                                   onFocus={(event) => {
-                                       this._scrollToInput(event.target)
-                                   }}
+                            onChangeText={(text) => this.setState({ data: { ...this.state.data, username: text } })}
+                            keyboardType='email-address'
+                            returnKeyType='next'
+                            onSubmitEditing={() => {
+                                this.password.focus();
+                            }}
+                            blurOnSubmit={false}
+                            onFocus={(event) => {
+                                this._scrollToInput(event.target)
+                            }}
                         />
                         <Text style={styles.textInput}>Contrase&ntilde;a:</Text>
                         <TextInput style={styles.inputStyle}
-                                   ref={(input) => {
-                                       this.password = input;
-                                   }}
-                                   secureTextEntry={true}
-                                   onChangeText={(text) => this.setState({data: {...this.state.data, password: text}})}
-                                   textContentType='password'
-                                   returnKeyType='done'
-                                   onSubmitEditing={() => {
-                                       this.login()
-                                   }}
-                                   onFocus={(event) => {
-                                       this._scrollToInput(event.target)
-                                   }}
+                            ref={(input) => {
+                                this.password = input;
+                            }}
+                            secureTextEntry={true}
+                            onChangeText={(text) => this.setState({ data: { ...this.state.data, password: text } })}
+                            textContentType='password'
+                            returnKeyType='done'
+                            onSubmitEditing={() => {
+                                this.login()
+                            }}
+                            onFocus={(event) => {
+                                this._scrollToInput(event.target)
+                            }}
                         />
-                        <View style={[styles.rowLink, {paddingTop: 0}]}>
+                        <View style={[styles.rowLink, { paddingTop: 0 }]}>
                             <Text style={styles.register}
-                                  onPress={() => this.props.navigation.navigate('RequestChangePass')}>Recuperar
+                                onPress={() => this.props.navigation.navigate('RequestChangePass')}>Recuperar
                                 Contrase&ntilde;a</Text>
                         </View>
                         <View style={styles.row}>
                             <TouchableOpacity
-                                style={[styles.btnLogin, {width: Dimensions.get('window').width - 96}]}
+                                style={[styles.btnLogin, { width: Dimensions.get('window').width - 96 }]}
                                 onPress={() => this.login()}>
                                 {
                                     !this.state.sending &&
-                                    <Text style={{color: 'white', fontFamily: 'roboto-bold'}}>INGRESAR</Text>
+                                    <Text style={{ color: 'white', fontFamily: 'roboto-bold' }}>INGRESAR</Text>
                                 }
                                 {this.state.sending &&
-                                <LottieView
-                                    ref={animation => {
-                                        this.animation = animation;
-                                    }}
-                                    source={require('../constants/sending.json')}
-                                    loop={true}
-                                />
+                                    <LottieView
+                                        ref={animation => {
+                                            this.animation = animation;
+                                        }}
+                                        source={require('../constants/sending.json')}
+                                        loop={true}
+                                    />
                                 }
                             </TouchableOpacity>
                         </View>
                         <View style={styles.registerView}>
                             <Text style={styles.registerText}>¿No tienes cuenta?</Text>
                             <Text style={styles.linkRegister}
-                                  onPress={() => this.props.navigation.navigate('Register')}> Regístrate</Text>
+                                onPress={() => this.props.navigation.navigate('Register')}> Regístrate</Text>
                         </View>
                     </KeyboardAvoidingView>
                 </KeyboardAwareScrollView>

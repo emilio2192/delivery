@@ -10,5 +10,6 @@ export default {
     createAssignement: '/assignment/create',
     GetAssignement: (user) => `/assignment/user/${user}`,
     MessengerLocation: '/assignment/messenger-location',
-    GetPackage: (user)=> `/user/package-balance/${user}`
+    GetPackage: (user)=> `/user/package-balance/${user}`,
+    registerDevice: '/user/set-device'
 }

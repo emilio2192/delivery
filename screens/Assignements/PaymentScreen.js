@@ -225,7 +225,7 @@ export class PaymentScreen extends React.Component {
                 'Confirmar',
                 message,
                 [
-                    {text: 'Aceptar', onPress: () => Promise.resolve(true)},
+                    {text: 'Si', onPress: () => Promise.resolve(true)},
                     {text: 'No', onPress: () => Promise.resolve(false)},
                 ],
                 {
@@ -309,7 +309,7 @@ export class PaymentScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <StatusBar barStyle="dark-content"/>
-                <ScreenHeader title={readonly ? (active ? "Ubicación" : "Resumen") : "Forma de Pago"}
+                <ScreenHeader title={readonly? (active ? "Ubicación" : "Resumen") : "Forma de Pago"}
                               navigation={this.props.navigation}
                               iconRight={readonly ? null : "payment"}/>
                 <MapView

@@ -19,6 +19,9 @@ export class LocationList extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    locationInfo:{
+        paddingRight:5
+    },
     location: {
         flexDirection: 'row',
         justifyContent: 'flex-start',
